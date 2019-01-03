@@ -1,0 +1,53 @@
+// @import '../main.less';
+li{
+	list-style: none;
+}
+.idx{
+	height: 100%;
+	width: 100%;
+	.idxheader{
+		width:375px;
+		height:44px;
+		background:rgba(255,255,255,1);
+		.nav{
+			height: 100%;
+			margin: 8px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.navleft{
+				width:auto;
+			}
+			.navbutton{
+				ul{
+					line-height: 44px;
+					width:120px;
+					height:28px;
+					background:rgba(255,255,255,1);
+					border-radius:14px;
+					border:1px solid rgba(120,181,204,1);
+					display:flex;
+					justify-content: center;
+					li{
+						width:60px;
+						height:28px;
+						background:rgba(120,181,204,1);
+						border-radius:14px;
+						border:1px solid rgba(120,181,204,1);
+						flex: 1;
+						text-align: center;
+						line-height: 28px;
+						span{
+							width:30px;
+							height:21px;
+							font-size:15px;
+							font-family:PingFangSC-Medium;
+							font-weight:500;
+							color:rgba(175,181,187,1);
+						}
+					}
+				}
+			}
+		}
+	}
+}
