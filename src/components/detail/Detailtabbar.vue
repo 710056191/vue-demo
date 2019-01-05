@@ -1,9 +1,9 @@
 <template>
 	<div class="detailtabbar">
-		<div class="input">
+		<div class="btn">
 			<input type="text" value="" placeholder="写评论..." class="inp" />
 		</div>
-		<div class="new">
+		<div class="news">
 			<svg-icon icon-class="wenzhangxiangqing_icon_dapinglun_default"></svg-icon>
 		</div>
 		<div class="share">
@@ -36,15 +36,17 @@
 	justify-content:space-around;
 	align-items:center;
 	.h(49);
-	.input{
+	.btn{
 		background:@header-bg-color;
 		.w(239);
 		.h(30);
 		background:rgba(255,255,255,1);
 		.bdradius(15);
 		border:1px solid #ccc;
-		input{
+		box-sizing:border-box;
+		.inp{
 			.margin(0,15,0,15);
+			display:inline-block;
 			.w(209);
 			.h(30);
 			.fs(14);
@@ -53,6 +55,9 @@
 			color:rgba(177,176,194,1);
 			.lh(30);
 		}
+	}
+	.news{
+		
 	}
 }
 </style>

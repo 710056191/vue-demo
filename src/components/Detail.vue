@@ -59,6 +59,7 @@
 <style lang="less" scoped="scoped">
 @import '../../styles/main.less';
 .detail{
+	background:@bg-color;
 	.header{
 		background:@header-bg-color;
 		.h(44);
@@ -76,7 +77,8 @@
 		}
 	}
 	.main{
-		.margin(54,12,12,12);
+		.padding(54,12,60,12);
+		background:@header-bg-color;
 		.title{
 			h1{
 				.w(334);
@@ -109,12 +111,15 @@
 		.content{
 			.w(338);
 			height:auto;
-			.fs(16);
+			.fs(14);
 			font-family:PingFangSC-Regular;
 			font-weight:400;
 			color:rgba(46,53,70,1);
 			.lh(24);
 			text-align: justify;
+		}
+		.comment{
+			.margin(10,22,0,12) ;
 		}
 	}
 }
