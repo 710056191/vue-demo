@@ -1,7 +1,5 @@
 <template>
-	<div class="idxmain"  v-infinite-scroll="loadMore"
-  infinite-scroll-disabled="loading"
-  infinite-scroll-distance="10">
+	<div class="idxmain">
 		<div class="top">
 			<div class="idxmainleft">
 				<div><p>123fsd aagsd gfd w ata sete sdggdszsrqFSA FWG</p></div>
@@ -21,8 +19,7 @@
 			<img src="../../assets/me_wenzhangbanner_default.png" />
 		</div>
 		<div class="txt">
-			<!-- <router-link :to="{path:'/detail'+item.id,query:{id:item[index].id}}" -->
-			<div class="main" v-for="item in list" :key="item.id" @click="GoToDetail(item)">
+			<div class="main" v-for="item in list" :key="item.id">
 				<div class="idxmainleft">
 					<div><p>{{item.post_title}}</p></div>
 					<div>
@@ -42,62 +39,37 @@
 </template>
 
 <script>
-	import { InfiniteScroll  } from 'mint-ui';
 	export default {
-		name:'IdxMain',
-		comments:{InfiniteScroll },
+		name:'IdxYYMain',
 		data() {
 			return {
-				list:[],
-				page:1,
-				category:5,
-				item:[]
+				list:[]
 			};
 		},
 		methods:{
-			loadMore(){
-				this.getDate();
-				this.loading = true;
-				  setTimeout(() => {
-					let last = this.list[this.list.length - 1];
-					for (let i = 1; i <= 10; i++) {
-					  this.list.push(last + i);
-					}
-					this.loading = false;
-				  }, 2500);
-			},
-			getDate(){
-				this.$axios.get('/api/yapi/article/alistpage/',{
-					params:{
-						category:this.category,
-						page:this.page
-					}
+			getData(){
+				//http://data.fk7h.com/yapi/article/alistpage/?category=98&page=1
+				this.$axios.get('/api/yapi/article/alistpage',{
+					category:98,
+					page:1
 				})
 				.then((res)=>{
+					console.log(res.data.data);
 					this.list=res.data.data;
-					this.page++;
 				})
-				.catch((error)=>{
-					console.log(error);
+				.catch((err)=>{
+					console.log(err);
 				})
-			},
-			GoToDetail(item){
-				this.$emit('select',item);
 			}
 		},
 		mounted(){
-			this.getDate();
+			this.getData();
 		}
 	}
 </script>
 
 <style lang="less" scoped="scoped">
-	
 @import '../../../styles/main.less';
-
-ul li{
-	list-style: none;
-}
 
 .idxmain{
 	height: auto;
@@ -107,7 +79,7 @@ ul li{
 		border-bottom: 1px solid #F2F2F2;
 		.idxmainleft{
 			.w(218);
-			height: auto;
+			.h(42);
 			.fs(15);
 			font-family:PingFangSC-Medium;
 			font-weight:500;
@@ -115,11 +87,10 @@ ul li{
 			.lh(21);
 			float: left;
 			div{
-				height: auto;
 				p{
 					white-space:pre-wrap;
 					.w(218);
-					height: auto;
+					.h(42);
 					.fs(15);
 					font-family:PingFangSC-Medium;
 					font-weight:500;
@@ -157,6 +128,8 @@ ul li{
 		img{
 			.w(345);
 			.h(131);
+			margin:0 auto;
+			text-align:center;
 			background:rgba(255,255,255,1);
 		}
 	}
@@ -164,6 +137,7 @@ ul li{
 		.h(105);
 		.idxmainleft{
 			.w(218);
+			.h(42);
 			.fs(15);
 			font-family:PingFangSC-Medium;
 			font-weight:500;
@@ -174,6 +148,7 @@ ul li{
 				p{
 					white-space:pre-wrap;
 					.w(218);
+					.h(42);
 					.fs(15);
 					font-family:PingFangSC-Medium;
 					font-weight:500;
@@ -203,10 +178,8 @@ ul li{
 			img{
 				.w(112);
 				.h(73);
-				.bdradius(5);
 			}
 		}
 	}
 }
-
 </style>

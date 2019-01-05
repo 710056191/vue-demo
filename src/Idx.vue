@@ -1,7 +1,7 @@
 <template>
   <div class="idx">
 		<Header></Header>
-		<IdxMain></IdxMain>
+		<IdxMain @select="goDetail"></IdxMain>
 		<TabBar></TabBar>
   </div>
 </template>
@@ -9,14 +9,24 @@
 import Header from './components/common/Header.vue';
 import TabBar from './components/common/TabBar.vue';
 import IdxMain from './components/IdxMain/IdxMain.vue';
+import IdxYYMain from './components/IdxMain/IdxYYMain.vue';
 export default {
 	name: 'Idx',
-	components:{Header,TabBar,IdxMain},
+	components:{Header,TabBar,IdxMain,IdxYYMain},
 	data () {
 		return {
-		  show:true,
+		}
+	},
+	methods:{
+		goDetail(item){
+			window.localStorage.setItem('msg',JSON.stringify(item));
+			this.$router.push({
+				path:`/detail/${item.id}`,
+				params:{itm:item}
+			})
 		}
 	}
+	
 }
 </script>
 <style lang="less" scoped="scoped">

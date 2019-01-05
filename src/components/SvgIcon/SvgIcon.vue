@@ -38,5 +38,6 @@ export default {
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+	margin: 0 auto;
 }
 </style>

@@ -4,26 +4,16 @@
 			<h2>行情</h2>
 		</div>
 		<div class="banner">
-			<ul>
-				<li class="name">伦敦金</li>
-				<li class="price">1216.550</li>
-				<li class="gain">+4.47%</li>
+			<ul v-for="item in list" :key="item.symbol">
+				<li class="name">{{item.name}}</li>
+				<li class="price">{{item.ask}}</li>
+				<li class="gain">{{item.pricechange}}</li>
 			</ul>
-			<ul>
-				<li class="name">伦敦金</li>
-				<li class="price">1216.550</li>
-				<li class="gain">+4.47%</li>
-			</ul>
-			<ul>
-				<li class="name">伦敦金</li>
-				<li class="price">1216.550</li>
-				<li class="gain">+4.47%</li>
-			</ul>
+			
 		</div>
 		<div class="main">
 			<ul>
-				<li>期货</li>
-				<li>原油</li>
+				<li v-for="(nav,index) in nav" :key="index"><p :class="sel===nav?'selected':'unselected'">{{nav}}</p></li>
 			</ul>
 			<QiHuo></QiHuo>
 		</div>
@@ -38,8 +28,31 @@
 		components:{YuanYou,QiHuo},
 		data() {
 			return {
-				
+				nav:['期货','原油'],
+				sel:'期货',
+				list:[]
 			};
+		},
+		methods:{
+			getList(){
+				//http://data.fk7h.com/yapi/Finance/gold_list?page=1&number=10&asc=0&sort=trade
+				this.$axios.get('/api/yapi/Finance/gold_list',{
+					page:1,
+					number:10,
+					asc:0,
+					sort:'trade'
+				})
+				.then((res)=>{
+					console.log(res.data);
+					this.list=res.data;
+				})
+				.catch((err)=>{
+					console.log(err);
+				})
+			}
+		},
+		mounted(){
+			this.getList();
 		}
 	}
 </script>
@@ -48,6 +61,14 @@
 	@import '../../../styles/main.less';
 	ul li{
 		list-style: none;
+	}
+	.selected{
+		color: @sfs-color;
+		border-bottom: 1px solid #78B5CC;
+	}
+	.unselected{
+		color:@fs-color;
+		border:none;
 	}
 	.hangqingmain{
 		.w(375);
@@ -85,6 +106,7 @@
 				li{
 					width: 100%;
 					text-align: center;
+					
 				}
 				.name{
 					.h(18);
@@ -123,13 +145,17 @@
 				border-bottom: 1px solid #F2F2F2;
 				li{
 					flex: 1;
-					.h(21);
-					.fs(15);
-					font-family:PingFangSC-Medium;
-					font-weight:500;
-					color:rgba(155,155,155,1);
-					.lh(40);
-					text-align: center;
+					p{
+						.h(40);
+						.w(30);
+						.fs(15);
+						font-family:PingFangSC-Medium;
+						font-weight:500;
+						.lh(40);
+						text-align: center;
+						margin: 0 auto;
+					}
+					
 				}
 			}
 		}

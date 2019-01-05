@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="18px" viewBox="0 0 20 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>wenzhangxiangqing_icon_dapinglun_default</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页-文章详情" transform="translate(-280.000000, -1044.000000)">
+            <g id="wenzhangxiangqing_icon_dapinglun_default" transform="translate(280.000000, 1044.000000)">
+                <path d="M2,1 C1.44771525,1 1,1.44771525 1,2 L1,16.2101567 C1,16.2209012 1.00275506,16.2314661 1.00800199,16.2408423 C1.02494596,16.271121 1.06321339,16.2819266 1.09351062,16.2649706 C2.78046566,15.3209482 4.55605552,14.7225028 6.41443639,14.4728798 C8.55897233,14.1848196 12.3932391,14.1544278 17.9604819,14.37461 C17.9802354,14.375261 17.9802354,14.375261 17.9999993,14.3753912 C18.5522842,14.375392 19.0000003,13.9276771 19.000001,13.375392 L19.000019,1.99999726 C19.000019,1.44771251 18.5523037,0.99999726 18.0000191,0.99999726 L2.00000017,1 Z" id="矩形" stroke="#78B5CC" stroke-width="2"></path>
+                <ellipse id="椭圆形" fill="#78B5CC" cx="5.78947368" cy="7.78546713" rx="1.57894737" ry="1.55709343"></ellipse>
+                <ellipse id="椭圆形-copy-3" fill="#78B5CC" cx="10" cy="7.78546713" rx="1.57894737" ry="1.55709343"></ellipse>
+                <ellipse id="椭圆形-copy-4" fill="#78B5CC" cx="14.2105263" cy="7.78546713" rx="1.57894737" ry="1.55709343"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>

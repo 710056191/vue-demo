@@ -1,23 +1,11 @@
 <template>
 	<div class="idxfooter">
-		<div class="tabbar">
-			<div class="shouye">
-				<svg-icon class="selected" icon-class="(home)_SFont.CN"></svg-icon>
-				<p class="active1">首页</p>
-			</div>
-			<div class="hangqing">
-				<svg-icon icon-class="tab_icon_hangqingan_default" id="active"></svg-icon>
-				<p>行情</p>
-			</div>
-			<div class="kuaixun">
-				<svg-icon icon-class="tab_icon_kuaixunan_default" id="active"></svg-icon>
-				<p>快讯</p>
-			</div>
-			<div class="wode">
-				<svg-icon class="active" icon-class="(user_avatar_login_account_profile_people)_SFont.CN (1)" id="active"></svg-icon>
-				<p>我的</p>
-			</div>
-		</div>
+		<mt-tabbar v-model="selected" style="background: #fff;">
+		  <mt-tab-item id="tab.name" v-for="tab in tabs" :key="tab.name" @click.native="GoTo(tab.name)">
+			<svg-icon slot="icon" :icon-class="tab.icon"></svg-icon>
+			{{tab.text}}
+		  </mt-tab-item>
+		</mt-tabbar>
 	</div>
 </template>
 
@@ -28,48 +16,59 @@
 		components:{Tabbar, TabItem},
 		data(){
 			return {
-				active:true
+				tabs:[
+				    {
+				        text:'首页',
+				        icon:'(home)_SFont.CN',
+				        path:'/',
+				        name:'Idx'
+				    },{
+				        text:'行情',
+				        icon:'tab_icon_hangqingan_default',
+				        path:'/hangqing',
+				        name:'HangQing',
+				    },
+					{
+					    text:'快讯',
+					    icon:'tab_icon_kuaixunan_default',
+					    path:'/kuaixun',
+					    name:'KuaiXun',
+					},
+					{
+				        text:'我的',
+				        icon:'(user_avatar_login_account_profile_people)_SFont.CN (1)',
+				        path:'/my',
+				        name:'My'
+				    }
+				],
+				selected:'Idx'
 			};
-			
+		},
+		methods:{
+			GoTo(name){
+				// nav.style.color='#FF6354';
+				// 编程式导航：利用js实现路由跳转
+				// 通过this.$router获取到路由实例对象
+				// this.$router.push({name});//等效于<router-link :to="{name:xxx}"/>
+				this.$router.push({name})
+			}
 		}
 	}
 </script>
 
 <style lang="less" scoped="scoped">
 @import '../../../styles/main.less';
-	.selected{
-		fill: #78B5CC;
-	}
-	.active{
-		fill: #AFB5BB;
-	}
-	.active1{
-		color: #78B5CC;
+	
+	.mint-tabbar > .mint-tab-item.is-selected {
+	  color: @sfs-color;
+	  fill: @sfs-color;
 	}
 .idxfooter{
+	width: 100%;
 	position: fixed;
 	bottom: 0;
 	right: 0;
 	left: 0;
-	.tabbar{
-		display: flex;
-		justify-content: center;
-		div{
-			flex: 1;
-			text-align: center;
-			
-			p{
-				width:100%;
-				.h(16);
-				font-size:11px;
-				font-family:PingFangSC-Regular;
-				font-weight:400;
-				color:#AFB5BB;
-				line-height:16px;
-				text-align: center;
-			}
-			
-		}
-	}
+	.h(49);
 }
 </style>

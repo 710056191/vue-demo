@@ -8,21 +8,39 @@
 			</div>
 			<div class="navbutton">
 				<ul>
-					<li>期货</li>
-					<li>原油</li>
+					<li v-for="(item,idx) in nav" :key="idx" :class="sel===item?'active2':''" @click="menu">{{item}}</li>
 				</ul>
 			</div>
+			
 			<div class="navsearch">
 				<svg-icon icon-class="nav_icon_sousuo_default"></svg-icon>
 			</div>
 		</div>
 	</div>
+	
 </template>
 
 <script>
+	import IdxMain from '../IdxMain/IdxMain.vue';
+	import IdxYYMain from '../IdxMain/IdxYYMain.vue';
+	import { TabContainer, TabContainerItem } from 'mint-ui';
 	export default {
 		name:'Header',
-		
+		components:{IdxMain,IdxYYMain,TabContainer,TabContainerItem},
+		data(){
+			return{
+				nav:['期货','原油'],
+				sel:'期货',
+				isShow:true
+			}
+		},
+		methods:{
+			menu(){
+				this.sel=item;
+			    this.isShow=!this.isShow;
+				
+			}
+		}
 	}
 </script>
 
@@ -42,7 +60,7 @@
 		.h(44);
 		background:rgba(255,255,255,1);
 		.nav{
-			.margin(8,8,8,8);
+			.margin(0,8,0,8);
 			height: 100%;
 			display: flex;
 			justify-content: space-between;
